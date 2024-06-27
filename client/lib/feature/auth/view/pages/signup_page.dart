@@ -1,3 +1,4 @@
+import 'package:client/feature/auth/view/widgets/auth_gradient_button.dart';
 import 'package:client/feature/auth/view/widgets/custom_field.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +38,8 @@ class _SignupPageState extends State<SignupPage> {
             CustomField(
               hintText: 'Password',
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 20),
+            AuthGradientButton(),
           ],
         ),
       ),
