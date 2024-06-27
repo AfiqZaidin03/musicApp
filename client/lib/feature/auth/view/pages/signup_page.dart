@@ -53,6 +53,7 @@ class _SignupPageState extends State<SignupPage> {
             CustomField(
               hintText: 'Password',
               controller: passwordController,
+              isObsecureText: true,
             ),
             const SizedBox(height: 20),
             const AuthGradientButton(),

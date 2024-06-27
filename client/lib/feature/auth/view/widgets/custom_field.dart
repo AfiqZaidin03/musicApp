@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class CustomField extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
+  final bool isObsecureText;
   const CustomField({
     super.key,
     required this.hintText,
     required this.controller,
+    this.isObsecureText = false,
   });
 
   @override
@@ -16,6 +18,7 @@ class CustomField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
       ),
+      obscureText: isObsecureText,
     );
   }
 }
