@@ -1,3 +1,4 @@
+import 'package:client/feature/auth/view/widgets/custom_field.dart';
 import 'package:flutter/material.dart';
 
 class SignupPage extends StatefulWidget {
@@ -10,6 +11,20 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(),
+      body: Column(
+        children: [
+          Text(
+            'Sign Up.',
+            style: TextStyle(
+              fontSize: 50,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          CustomField(),
+        ],
+      ),
+    );
   }
 }
