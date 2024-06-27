@@ -21,7 +21,7 @@ class AuthGradientButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
-          fixedSize: Size(395, 55),
+          fixedSize: Size(410, 55),
           backgroundColor: Pallete.transparentColor,
           shadowColor: Pallete.transparentColor,
         ),
