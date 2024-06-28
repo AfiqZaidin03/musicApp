@@ -4,6 +4,7 @@ import 'package:client/feature/auth/view/pages/login_page.dart';
 import 'package:client/feature/auth/view/widgets/auth_gradient_button.dart';
 import 'package:client/feature/auth/view/widgets/custom_field.dart';
 import 'package:flutter/material.dart';
+import 'package:fpdart/fpdart.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -70,7 +71,11 @@ class _SignupPageState extends State<SignupPage> {
                     email: emailController.text,
                     password: passwordController.text,
                   );
-                  print(res);
+                  final val = switch (res) {
+                    Left(value: final l) => l,
+                    Right(value: final r) => r.toString(),
+                  };
+                  print(val);
                 },
               ),
               const SizedBox(height: 20),
