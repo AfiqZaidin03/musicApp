@@ -33,13 +33,7 @@ class AuthRemoteRepository {
         return Left(AppFailure(resBodyMap['detail']));
       }
 
-      return Right(
-        UserModel(
-          name: name,
-          email: email,
-          id: resBodyMap['id'],
-        ),
-      );
+      return Right(UserModel.fromMap(resBodyMap));
     } catch (e) {
       return Left(AppFailure(e.toString()));
     }
