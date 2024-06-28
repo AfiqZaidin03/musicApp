@@ -62,7 +62,7 @@ class _SignupPageState extends State<SignupPage> {
               ),
               const SizedBox(height: 20),
               AuthGradientButton(
-                buttonText: 'Sign Un',
+                buttonText: 'Sign Up',
                 onTap: () async {
                   await AuthRemoteRepository().signup(
                     name: nameController.text,
@@ -78,7 +78,7 @@ class _SignupPageState extends State<SignupPage> {
                   style: Theme.of(context).textTheme.titleMedium,
                   children: const [
                     TextSpan(
-                      text: 'Sign Ip',
+                      text: 'Sign In',
                       style: TextStyle(
                         color: Pallete.gradient2,
                         fontWeight: FontWeight.bold,
