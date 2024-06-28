@@ -65,11 +65,12 @@ class _SignupPageState extends State<SignupPage> {
               AuthGradientButton(
                 buttonText: 'Sign Up',
                 onTap: () async {
-                  await AuthRemoteRepository().signup(
+                  final res = await AuthRemoteRepository().signup(
                     name: nameController.text,
                     email: emailController.text,
                     password: passwordController.text,
                   );
+                  print(res);
                 },
               ),
               const SizedBox(height: 20),
