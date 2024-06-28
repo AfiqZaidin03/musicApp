@@ -15,7 +15,7 @@ router = APIRouter()
 # Signup
 
 
-@router.post('/signup')
+@router.post('/signup', status_code=201)
 def signup_user(user: UserCreate, db: Session = Depends(get_db)):
 
     # check if the user already exists in db
