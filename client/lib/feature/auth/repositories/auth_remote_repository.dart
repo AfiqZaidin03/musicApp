@@ -39,7 +39,7 @@ class AuthRemoteRepository {
     }
   }
 
-  Future<void> login({
+  Future<Either<AppFailure, UserModel>> login({
     required String email,
     required String password,
   }) async {
@@ -58,10 +58,15 @@ class AuthRemoteRepository {
           },
         ),
       );
-      print(response.body);
-      print(response.statusCode);
+      final resBodyMap = jsonDecode(response.body) as Map<String, dynamic>;
+
+      if (response.statusCode != 200) {
+        return Left(AppFailure(resBodyMap['detail']));
+      }
+
+      return Right(UserModel.fromMap(resBodyMap));
     } catch (e) {
-      print(e);
+      return Left(AppFailure(e.toString()));
     }
   }
 }
