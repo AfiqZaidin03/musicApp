@@ -66,11 +66,13 @@ class _SignupPageState extends ConsumerState<SignupPage> {
               AuthGradientButton(
                 buttonText: 'Sign Up',
                 onTap: () async {
-                  await ref.read(authViewModelProvider.notifier).signUpUser(
-                        name: nameController.text,
-                        email: emailController.text,
-                        password: passwordController.text,
-                      );
+                  if (formKey.currentState!.validate()) {
+                    await ref.read(authViewModelProvider.notifier).signUpUser(
+                          name: nameController.text,
+                          email: emailController.text,
+                          password: passwordController.text,
+                        );
+                  }
                 },
               ),
               const SizedBox(height: 20),
