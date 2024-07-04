@@ -37,13 +37,10 @@ class _SignupPageState extends ConsumerState<SignupPage> {
     ref.listen(authViewModelProvider, (_, next) {
       next?.when(
         data: (data) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              const SnackBar(
-                content: Text('Account created successfully! Please login.'),
-              ),
-            );
+          showSnackBar(
+            context,
+            'Account created successfully! Please login.',
+          );
           Navigator.push(
             context,
             MaterialPageRoute(
