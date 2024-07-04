@@ -26,7 +26,7 @@ class AuthViewModel extends _$AuthViewModel {
 
     final val = switch (res) {
       Left(value: final l) => l,
-      Right(value: final r) => r.toString(),
+      Right(value: final r) => r.name,
     };
     print(val);
   }
