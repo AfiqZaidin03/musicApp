@@ -1,4 +1,5 @@
 import 'package:client/core/theme/app_pallete.dart';
+import 'package:client/core/utils.dart';
 import 'package:client/core/widgets/loader.dart';
 import 'package:client/feature/auth/view/pages/login_page.dart';
 import 'package:client/feature/auth/view/widgets/auth_gradient_button.dart';
@@ -51,13 +52,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
           );
         },
         error: (error, stackTrace) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: Text(error.toString()),
-              ),
-            );
+          showSnackBar(context, error.toString());
         },
         loading: () {},
       );
