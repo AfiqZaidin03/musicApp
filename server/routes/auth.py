@@ -2,6 +2,7 @@
 import uuid
 
 import bcrypt
+import jwt
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
@@ -53,4 +54,6 @@ def login_user(user: UserLogin, db: Session = Depends(get_db)):
     if not is_match:
         raise HTTPException(400, 'Incorrect password!')
 
-    return user_db
+    token = jwt.encode({'id': user_db.id}, 'password_key')
+
+    return {'token': token, 'user': user_db}
