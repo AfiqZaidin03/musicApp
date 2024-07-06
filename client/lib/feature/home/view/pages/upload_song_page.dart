@@ -18,31 +18,35 @@ class _UploadSongPageState extends ConsumerState<UploadSongPage> {
         title: const Text('Upload Song'),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          DottedBorder(
-            color: Pallete.borderColor,
-            dashPattern: const [10, 4],
-            child: const SizedBox(
-              height: 150,
-              width: double.infinity,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.folder_open,
-                    size: 40,
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    'Select the thumbnail for your song',
-                    style: TextStyle(fontSize: 15),
-                  ),
-                ],
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            DottedBorder(
+              color: Pallete.borderColor,
+              radius: const Radius.circular(10),
+              dashPattern: const [10, 4],
+              child: const SizedBox(
+                height: 150,
+                width: double.infinity,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.folder_open,
+                      size: 40,
+                    ),
+                    SizedBox(height: 15),
+                    Text(
+                      'Select the thumbnail for your song',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
