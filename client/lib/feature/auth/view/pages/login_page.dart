@@ -1,6 +1,7 @@
 import 'package:client/core/theme/app_pallete.dart';
 import 'package:client/core/utils.dart';
 import 'package:client/core/widgets/loader.dart';
+import 'package:client/feature/auth/pages/home_page.dart';
 import 'package:client/feature/auth/view/pages/signup_page.dart';
 import 'package:client/feature/auth/view/widgets/auth_gradient_button.dart';
 import 'package:client/feature/auth/view/widgets/custom_field.dart';
@@ -36,13 +37,13 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     ref.listen(authViewModelProvider, (_, next) {
       next?.when(
         data: (data) {
-          // TODO: Navigate to homepage
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => const LoginPage(),
-          //   ),
-          // );
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const HomePage(),
+            ),
+            (_) => false,
+          );
         },
         error: (error, stackTrace) {
           showSnackBar(context, error.toString());
