@@ -1,6 +1,7 @@
 import 'package:client/core/theme/app_pallete.dart';
 import 'package:client/core/widgets/custom_field.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -74,6 +75,10 @@ class _UploadSongPageState extends ConsumerState<UploadSongPage> {
             CustomField(
               hintText: 'Song Name',
               controller: songNameController,
+            ),
+            const SizedBox(height: 20),
+            ColorPicker(
+              onColorChanged: (Color color) {},
             ),
           ],
         ),
