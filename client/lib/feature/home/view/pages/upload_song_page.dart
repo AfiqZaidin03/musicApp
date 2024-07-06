@@ -1,3 +1,4 @@
+import 'package:client/core/theme/app_pallete.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,6 +21,8 @@ class _UploadSongPageState extends ConsumerState<UploadSongPage> {
       body: Column(
         children: [
           DottedBorder(
+            color: Pallete.borderColor,
+            dashPattern: const [10, 4],
             child: const SizedBox(
               height: 150,
               width: double.infinity,
