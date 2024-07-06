@@ -15,6 +15,7 @@ class UploadSongPage extends ConsumerStatefulWidget {
 class _UploadSongPageState extends ConsumerState<UploadSongPage> {
   final songNameController = TextEditingController();
   final artistController = TextEditingController();
+  Color selectedColor = Pallete.cardColor;
 
   @override
   void dispose() {
@@ -78,7 +79,12 @@ class _UploadSongPageState extends ConsumerState<UploadSongPage> {
             ),
             const SizedBox(height: 20),
             ColorPicker(
-              onColorChanged: (Color color) {},
+              color: selectedColor,
+              onColorChanged: (Color color) {
+                setState(() {
+                  selectedColor = color;
+                });
+              },
             ),
           ],
         ),
