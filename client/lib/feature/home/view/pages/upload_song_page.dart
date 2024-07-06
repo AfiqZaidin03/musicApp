@@ -1,4 +1,5 @@
 import 'package:client/core/theme/app_pallete.dart';
+import 'package:client/core/widgets/custom_field.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -46,6 +47,12 @@ class _UploadSongPageState extends ConsumerState<UploadSongPage> {
                   ],
                 ),
               ),
+            ),
+            const SizedBox(height: 40),
+            CustomField(
+              hintText: 'Pick Song',
+              controller: null,
+              readOnly: true,
             )
           ],
         ),
