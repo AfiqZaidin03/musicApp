@@ -30,63 +30,74 @@ class _UploadSongPageState extends ConsumerState<UploadSongPage> {
       appBar: AppBar(
         title: const Text('Upload Song'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.check),
+          ),
+        ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            DottedBorder(
-              color: Pallete.borderColor,
-              radius: const Radius.circular(10),
-              borderType: BorderType.RRect,
-              dashPattern: const [10, 4],
-              strokeCap: StrokeCap.round,
-              child: const SizedBox(
-                height: 150,
-                width: double.infinity,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.folder_open,
-                      size: 40,
-                    ),
-                    SizedBox(height: 15),
-                    Text(
-                      'Select the thumbnail for your song',
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              DottedBorder(
+                color: Pallete.borderColor,
+                radius: const Radius.circular(10),
+                borderType: BorderType.RRect,
+                dashPattern: const [10, 4],
+                strokeCap: StrokeCap.round,
+                child: const SizedBox(
+                  height: 150,
+                  width: double.infinity,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.folder_open,
+                        size: 40,
+                      ),
+                      SizedBox(height: 15),
+                      Text(
+                        'Select the thumbnail for your song',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 40),
-            CustomField(
-              hintText: 'Pick Song',
-              controller: null,
-              readOnly: true,
-              onTap: () {},
-            ),
-            const SizedBox(height: 20),
-            CustomField(
-              hintText: 'Artist',
-              controller: artistController,
-            ),
-            const SizedBox(height: 20),
-            CustomField(
-              hintText: 'Song Name',
-              controller: songNameController,
-            ),
-            const SizedBox(height: 20),
-            ColorPicker(
-              color: selectedColor,
-              onColorChanged: (Color color) {
-                setState(() {
-                  selectedColor = color;
-                });
-              },
-            ),
-          ],
+              const SizedBox(height: 40),
+              CustomField(
+                hintText: 'Pick Song',
+                controller: null,
+                readOnly: true,
+                onTap: () {},
+              ),
+              const SizedBox(height: 20),
+              CustomField(
+                hintText: 'Artist',
+                controller: artistController,
+              ),
+              const SizedBox(height: 20),
+              CustomField(
+                hintText: 'Song Name',
+                controller: songNameController,
+              ),
+              const SizedBox(height: 20),
+              ColorPicker(
+                pickersEnabled: const {
+                  ColorPickerType.wheel: true,
+                },
+                color: selectedColor,
+                onColorChanged: (Color color) {
+                  setState(() {
+                    selectedColor = color;
+                  });
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
