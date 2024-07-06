@@ -5,18 +5,20 @@ class CustomField extends StatelessWidget {
   final TextEditingController? controller;
   final bool isObsecureText;
   final bool readOnly;
-
+  final VoidCallback? onTap;
   const CustomField({
     super.key,
     required this.hintText,
     required this.controller,
     this.isObsecureText = false,
     this.readOnly = false,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap: onTap,
       readOnly: readOnly,
       controller: controller,
       decoration: InputDecoration(

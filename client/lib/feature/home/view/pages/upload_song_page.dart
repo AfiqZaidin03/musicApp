@@ -53,6 +53,7 @@ class _UploadSongPageState extends ConsumerState<UploadSongPage> {
               hintText: 'Pick Song',
               controller: null,
               readOnly: true,
+              onTap: () {},
             )
           ],
         ),
