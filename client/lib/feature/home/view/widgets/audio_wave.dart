@@ -1,4 +1,5 @@
 import 'package:audio_waveforms/audio_waveforms.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AudioWave extends StatefulWidget {
@@ -44,9 +45,19 @@ class _AudioWaveState extends State<AudioWave> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        AudioFileWaveforms(
-          size: const Size(double.infinity, 100),
-          playerController: playerController,
+        IconButton(
+          onPressed: playAndPause,
+          icon: Icon(
+            playerController.playerState.isPlaying
+                ? CupertinoIcons.pause_solid
+                : CupertinoIcons.play_arrow_solid,
+          ),
+        ),
+        Expanded(
+          child: AudioFileWaveforms(
+            size: const Size(double.infinity, 100),
+            playerController: playerController,
+          ),
         ),
       ],
     );
