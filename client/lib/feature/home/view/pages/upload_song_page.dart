@@ -63,9 +63,12 @@ class _UploadSongPageState extends ConsumerState<UploadSongPage> {
                     ? SizedBox(
                         height: 150,
                         width: double.infinity,
-                        child: Image.file(
-                          seletedImage!,
-                          fit: BoxFit.cover,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.file(
+                            seletedImage!,
+                            fit: BoxFit.cover,
+                          ),
                         ))
                     : DottedBorder(
                         color: Pallete.borderColor,
