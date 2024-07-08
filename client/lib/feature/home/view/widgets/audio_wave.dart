@@ -61,7 +61,8 @@ class _AudioWaveState extends State<AudioWave> {
             playerWaveStyle: const PlayerWaveStyle(
               fixedWaveColor: Pallete.borderColor,
               liveWaveColor: Pallete.gradient2,
-              spacing: 5,
+              spacing: 6,
+              showSeekLine: false,
             ),
           ),
         ),
