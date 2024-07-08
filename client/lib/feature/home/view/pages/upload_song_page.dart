@@ -22,7 +22,15 @@ class _UploadSongPageState extends ConsumerState<UploadSongPage> {
   File? seletedImage;
   File? seletedAudio;
 
-  void selectAudio() {}
+  void selectAudio() async {
+    final pickedAudio = await pickAudio();
+    if (pickedAudio != null) {
+      setState(() {
+        seletedAudio = pickedAudio;
+      });
+    }
+  }
+
   void selectImage() async {
     final pickedImage = await pickImage();
     if (pickedImage != null) {
@@ -101,7 +109,7 @@ class _UploadSongPageState extends ConsumerState<UploadSongPage> {
                 hintText: 'Pick Song',
                 controller: null,
                 readOnly: true,
-                onTap: () {},
+                onTap: selectAudio,
               ),
               const SizedBox(height: 20),
               CustomField(
