@@ -21,6 +21,16 @@ class CurrentSongNotifier extends _$CurrentSongNotifier {
     );
     await audioPlayer!.setAudioSource(audioSource);
 
+    audioPlayer!.playerStateStream.listen((state) {
+      if (state.processingState == ProcessingState.completed) {
+        audioPlayer!.seek(Duration.zero);
+        audioPlayer!.pause();
+        isPlaying = false;
+
+        this.state = this.state?.copyWith(hex_code: this.state?.hex_code);
+      }
+    });
+
     audioPlayer!.play();
     isPlaying = true;
     state = song;
