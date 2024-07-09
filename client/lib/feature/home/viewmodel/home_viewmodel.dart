@@ -36,8 +36,9 @@ class HomeViewmodel extends _$HomeViewmodel {
     );
 
     final val = switch (res) {
-      Left(value: final l) => AsyncValue.error(l.message, StackTrace.current),
-      Right(value: final r) => AsyncValue.data(r),
+      Left(value: final l) => state =
+          AsyncValue.error(l.message, StackTrace.current),
+      Right(value: final r) => state = AsyncValue.data(r),
     };
     print(val);
   }
