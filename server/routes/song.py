@@ -35,17 +35,16 @@ def upload_song(song: UploadFile = File(...),
     song_id = str(uuid.uuid4())
     song_res = cloudinary.uploader.upload(
         song.file, resource_type='auto', folder=f'songs/{song_id}')
-
     thumbnail_res = cloudinary.uploader.upload(
         thumbnail.file, resource_type='image', folder=f'songs/{song_id}')
 
     new_song = Song(
         id=song_id,
-        song_name=song,
+        song_name=song_name,
         artist=artist,
         hex_code=hex_code,
         song_url=song_res['url'],
-        thumbnail_url=thumbnail_res,
+        thumbnail_url=thumbnail_res['url'],
     )
 
     db.add(new_song)
