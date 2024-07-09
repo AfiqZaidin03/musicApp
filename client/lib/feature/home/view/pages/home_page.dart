@@ -1,6 +1,7 @@
 import 'package:client/core/theme/app_pallete.dart';
 import 'package:client/feature/home/view/pages/library_page.dart';
 import 'package:client/feature/home/view/pages/song_page.dart';
+import 'package:client/feature/home/view/widgets/music_slab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -22,7 +23,15 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[selectedIndex],
+      body: Stack(
+        children: [
+          pages[selectedIndex],
+          const Positioned(
+            bottom: 0,
+            child: MusicSlab(),
+          ),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: selectedIndex,
         onTap: (value) {
