@@ -92,113 +92,116 @@ class MusicPlayer extends ConsumerWidget {
                         onPressed: () {},
                         icon: const Icon(
                           CupertinoIcons.heart,
+                          color: Pallete.whiteColor,
                         ),
                       )
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  Column(
+                    children: [
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          activeTrackColor: Pallete.whiteColor,
+                          inactiveTrackColor:
+                              Pallete.whiteColor.withOpacity(0.117),
+                          thumbColor: Pallete.whiteColor,
+                          trackHeight: 4,
+                          overlayShape: SliderComponentShape.noOverlay,
+                        ),
+                        child: Slider(
+                          value: 0.5,
+                          onChanged: (value) {},
+                        ),
+                      )
+                    ],
+                  ),
+                  const Row(
+                    children: [
+                      Text(
+                        '0:05',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w300,
+                          color: Pallete.subtitleText,
+                        ),
+                      ),
+                      Expanded(child: SizedBox()),
+                      Text(
+                        '0:10',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w300,
+                          color: Pallete.subtitleText,
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Image.asset(
+                          'assets/images/shuffle.png',
+                          color: Pallete.whiteColor,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Image.asset(
+                          'assets/images/previus-song.png',
+                          color: Pallete.whiteColor,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          CupertinoIcons.play_circle_fill,
+                        ),
+                        iconSize: 80,
+                        color: Pallete.whiteColor,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Image.asset(
+                          'assets/images/next-song.png',
+                          color: Pallete.whiteColor,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Image.asset(
+                          'assets/images/repeat.png',
+                          color: Pallete.whiteColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Image.asset(
+                          'assets/images/connect-device.png',
+                          color: Pallete.whiteColor,
+                        ),
+                      ),
+                      const Expanded(child: SizedBox()),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Image.asset(
+                          'assets/images/playlist.png',
+                          color: Pallete.whiteColor,
+                        ),
+                      ),
                     ],
                   )
                 ],
               ),
             ),
-            Column(
-              children: [
-                SliderTheme(
-                  data: SliderTheme.of(context).copyWith(
-                    activeTrackColor: Pallete.whiteColor,
-                    inactiveTrackColor: Pallete.whiteColor.withOpacity(0.117),
-                    thumbColor: Pallete.whiteColor,
-                    trackHeight: 4,
-                    overlayShape: SliderComponentShape.noOverlay,
-                  ),
-                  child: Slider(
-                    value: 0.5,
-                    onChanged: (value) {},
-                  ),
-                )
-              ],
-            ),
-            const Row(
-              children: [
-                Text(
-                  '0:05',
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w300,
-                    color: Pallete.subtitleText,
-                  ),
-                ),
-                Expanded(child: SizedBox()),
-                Text(
-                  '0:10',
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w300,
-                    color: Pallete.subtitleText,
-                  ),
-                )
-              ],
-            ),
-            const SizedBox(height: 15),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Image.asset(
-                    'assets/images/shuffle.png',
-                    color: Pallete.whiteColor,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Image.asset(
-                    'assets/images/previus-song.png',
-                    color: Pallete.whiteColor,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    CupertinoIcons.play_circle_fill,
-                  ),
-                  iconSize: 80,
-                  color: Pallete.whiteColor,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Image.asset(
-                    'assets/images/next-song.png',
-                    color: Pallete.whiteColor,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Image.asset(
-                    'assets/images/repeat.png',
-                    color: Pallete.whiteColor,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 15),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Image.asset(
-                    'assets/images/connect-device.png',
-                    color: Pallete.whiteColor,
-                  ),
-                ),
-                const Expanded(child: SizedBox()),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Image.asset(
-                    'assets/images/playlist.png',
-                    color: Pallete.whiteColor,
-                  ),
-                ),
-              ],
-            )
           ],
         ),
       ),
