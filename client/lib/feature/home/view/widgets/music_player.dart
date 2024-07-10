@@ -140,7 +140,10 @@ class MusicPlayer extends ConsumerWidget {
                                 value: sliderValue,
                                 min: 0,
                                 max: 1,
-                                onChanged: (value) {},
+                                onChanged: (value) {
+                                  sliderValue = value;
+                                },
+                                onChangeEnd: songNotifier.seek,
                               ),
                             ),
                             const Row(
