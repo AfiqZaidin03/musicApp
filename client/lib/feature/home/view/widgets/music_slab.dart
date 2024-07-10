@@ -45,14 +45,17 @@ class MusicSlab extends ConsumerWidget {
               children: [
                 Row(
                   children: [
-                    Container(
-                      width: 48,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(currentSong.thumbnail_url),
-                          fit: BoxFit.cover,
+                    Hero(
+                      tag: 'music-image',
+                      child: Container(
+                        width: 48,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(currentSong.thumbnail_url),
+                            fit: BoxFit.cover,
+                          ),
+                          borderRadius: BorderRadius.circular(4),
                         ),
-                        borderRadius: BorderRadius.circular(4),
                       ),
                     ),
                     const SizedBox(width: 8),
