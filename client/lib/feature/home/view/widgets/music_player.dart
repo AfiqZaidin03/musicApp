@@ -90,8 +90,26 @@ class MusicPlayer extends ConsumerWidget {
                 )
               ],
             ),
-            Row(
-              children: [],
+            const Row(
+              children: [
+                Text(
+                  '0:05',
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w300,
+                    color: Pallete.subtitleText,
+                  ),
+                ),
+                Expanded(child: SizedBox()),
+                Text(
+                  '0:10',
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w300,
+                    color: Pallete.subtitleText,
+                  ),
+                )
+              ],
             ),
           ],
         ),
