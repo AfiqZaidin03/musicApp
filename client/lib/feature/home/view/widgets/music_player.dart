@@ -18,7 +18,12 @@ class MusicPlayer extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [hexToColor(currentSong!.hex_code), const Color(0xff121212)],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            hexToColor(currentSong!.hex_code),
+            const Color(0xff121212),
+          ],
         ),
       ),
       child: Scaffold(
@@ -46,7 +51,7 @@ class MusicPlayer extends ConsumerWidget {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(
-                        currentSong!.thumbnail_url,
+                        currentSong.thumbnail_url,
                       ),
                       fit: BoxFit.cover,
                     ),
