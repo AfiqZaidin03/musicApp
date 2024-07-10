@@ -16,6 +16,15 @@ class MusicPlayer extends ConsumerWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Scaffold(
+        appBar: AppBar(
+          leading: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Image.asset(
+              'assets/images/next-song.png',
+              color: Pallete.whiteColor,
+            ),
+          ),
+        ),
         body: Column(
           children: [
             Expanded(
@@ -82,6 +91,7 @@ class MusicPlayer extends ConsumerWidget {
                     inactiveTrackColor: Pallete.whiteColor.withOpacity(0.117),
                     thumbColor: Pallete.whiteColor,
                     trackHeight: 4,
+                    overlayShape: SliderComponentShape.noOverlay,
                   ),
                   child: Slider(
                     value: 0.5,
@@ -111,6 +121,68 @@ class MusicPlayer extends ConsumerWidget {
                 )
               ],
             ),
+            const SizedBox(height: 15),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image.asset(
+                    'assets/images/shuffle.png',
+                    color: Pallete.whiteColor,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image.asset(
+                    'assets/images/previus-song.png',
+                    color: Pallete.whiteColor,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    CupertinoIcons.play_circle_fill,
+                  ),
+                  iconSize: 80,
+                  color: Pallete.whiteColor,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image.asset(
+                    'assets/images/next-song.png',
+                    color: Pallete.whiteColor,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image.asset(
+                    'assets/images/repeat.png',
+                    color: Pallete.whiteColor,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 15),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image.asset(
+                    'assets/images/connect-device.png',
+                    color: Pallete.whiteColor,
+                  ),
+                ),
+                const Expanded(child: SizedBox()),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image.asset(
+                    'assets/images/playlist.png',
+                    color: Pallete.whiteColor,
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
