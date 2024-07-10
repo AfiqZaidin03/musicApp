@@ -1,5 +1,6 @@
 import 'package:client/core/provider/current_song_notifier.dart';
 import 'package:client/core/theme/app_pallete.dart';
+import 'package:client/core/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,15 +14,25 @@ class MusicPlayer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentSong = ref.watch(currentSongNotifierProvider);
 
-    return Padding(
+    return Container(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [hexToColor(currentSong!.hex_code), const Color(0xff121212)],
+        ),
+      ),
       child: Scaffold(
+        backgroundColor: Pallete.transparentColor,
         appBar: AppBar(
-          leading: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Image.asset(
-              'assets/images/next-song.png',
-              color: Pallete.whiteColor,
+          backgroundColor: Pallete.transparentColor,
+          leading: Transform.translate(
+            offset: const Offset(-15, 0),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Image.asset(
+                'assets/images/pull-down-arrow.png',
+                color: Pallete.whiteColor,
+              ),
             ),
           ),
         ),
