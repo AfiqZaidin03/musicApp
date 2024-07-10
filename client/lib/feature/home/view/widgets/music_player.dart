@@ -127,24 +127,31 @@ class MusicPlayer extends ConsumerWidget {
 
                         return Column(
                           children: [
-                            SliderTheme(
-                              data: SliderTheme.of(context).copyWith(
-                                activeTrackColor: Pallete.whiteColor,
-                                inactiveTrackColor:
-                                    Pallete.whiteColor.withOpacity(0.117),
-                                thumbColor: Pallete.whiteColor,
-                                trackHeight: 4,
-                                overlayShape: SliderComponentShape.noOverlay,
-                              ),
-                              child: Slider(
-                                value: sliderValue,
-                                min: 0,
-                                max: 1,
-                                onChanged: (value) {
-                                  sliderValue = value;
-                                },
-                                onChangeEnd: songNotifier.seek,
-                              ),
+                            StatefulBuilder(
+                              builder: (BuildContext context, setState) {
+                                return SliderTheme(
+                                  data: SliderTheme.of(context).copyWith(
+                                    activeTrackColor: Pallete.whiteColor,
+                                    inactiveTrackColor:
+                                        Pallete.whiteColor.withOpacity(0.117),
+                                    thumbColor: Pallete.whiteColor,
+                                    trackHeight: 4,
+                                    overlayShape:
+                                        SliderComponentShape.noOverlay,
+                                  ),
+                                  child: Slider(
+                                    value: sliderValue,
+                                    min: 0,
+                                    max: 1,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        sliderValue = value;
+                                      });
+                                    },
+                                    onChangeEnd: songNotifier.seek,
+                                  ),
+                                );
+                              },
                             ),
                             Row(
                               children: [
