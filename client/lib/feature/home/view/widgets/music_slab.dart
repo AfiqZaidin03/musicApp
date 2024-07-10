@@ -21,9 +21,21 @@ class MusicSlab extends ConsumerWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) {
+          PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) {
               return const MusicPlayer();
+            },
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              final tween =
+                  Tween(begin: const Offset(0, 1), end: Offset.zero).chain(
+                CurveTween(curve: Curves.easeIn),
+              );
+              final offsetAnimation = animation.drive(tween);
+              return SlideTransition(
+                position: offsetAnimation,
+                child: child,
+              );
             },
           ),
         );
