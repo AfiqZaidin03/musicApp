@@ -73,7 +73,26 @@ class MusicPlayer extends ConsumerWidget {
                   )
                 ],
               ),
-            )
+            ),
+            Column(
+              children: [
+                SliderTheme(
+                  data: SliderTheme.of(context).copyWith(
+                    activeTrackColor: Pallete.whiteColor,
+                    inactiveTrackColor: Pallete.whiteColor.withOpacity(0.117),
+                    thumbColor: Pallete.whiteColor,
+                    trackHeight: 4,
+                  ),
+                  child: Slider(
+                    value: 0.5,
+                    onChanged: (value) {},
+                  ),
+                )
+              ],
+            ),
+            Row(
+              children: [],
+            ),
           ],
         ),
       ),
