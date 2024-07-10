@@ -20,7 +20,7 @@ final getAllSongsProvider = AutoDisposeFutureProvider<List<SongModel>>.internal(
 );
 
 typedef GetAllSongsRef = AutoDisposeFutureProviderRef<List<SongModel>>;
-String _$homeViewmodelHash() => r'60ae9b6292558545d0708a6921a58d3846391bf1';
+String _$homeViewmodelHash() => r'652fc83cf56713563f2e2954021930568514714c';
 
 /// See also [HomeViewmodel].
 @ProviderFor(HomeViewmodel)
