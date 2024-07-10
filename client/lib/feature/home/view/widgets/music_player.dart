@@ -32,11 +32,19 @@ class MusicPlayer extends ConsumerWidget {
           backgroundColor: Pallete.transparentColor,
           leading: Transform.translate(
             offset: const Offset(-15, 0),
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Image.asset(
-                'assets/images/pull-down-arrow.png',
-                color: Pallete.whiteColor,
+            child: InkWell(
+              highlightColor: Pallete.transparentColor,
+              focusColor: Pallete.transparentColor,
+              splashColor: Pallete.transparentColor,
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Image.asset(
+                  'assets/images/pull-down-arrow.png',
+                  color: Pallete.whiteColor,
+                ),
               ),
             ),
           ),
