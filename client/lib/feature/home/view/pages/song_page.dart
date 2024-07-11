@@ -16,7 +16,8 @@ class SongPage extends ConsumerWidget {
         ref.watch(homeViewmodelProvider.notifier).getRecentlyPlaySongs();
     final currentSong = ref.watch(currentSongNotifierProvider);
 
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 500),
       decoration: currentSong == null
           ? null
           : BoxDecoration(
