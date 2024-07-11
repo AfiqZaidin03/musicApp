@@ -33,39 +33,47 @@ class SongPage extends ConsumerWidget {
                 itemBuilder: (BuildContext context, int index) {
                   final song = recentlyPlayedSongs[index];
 
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: Pallete.borderColor,
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 56,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage(song.thumbnail_url),
-                              fit: BoxFit.cover,
-                            ),
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4),
-                              bottomLeft: Radius.circular(4),
+                  return GestureDetector(
+                    onTap: () {
+                      ref
+                          .read(currentSongNotifierProvider.notifier)
+                          .updateSong(song);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Pallete.borderColor,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      padding: const EdgeInsets.only(right: 20),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 56,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: NetworkImage(song.thumbnail_url),
+                                fit: BoxFit.cover,
+                              ),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(4),
+                                bottomLeft: Radius.circular(4),
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(width: 8),
-                        Flexible(
-                          child: Text(
-                            song.song_name,
-                            style: const TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w700,
-                              overflow: TextOverflow.ellipsis,
+                          const SizedBox(width: 8),
+                          Flexible(
+                            child: Text(
+                              song.song_name,
+                              style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w700,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              maxLines: 1,
                             ),
-                            maxLines: 1,
-                          ),
-                        )
-                      ],
+                          )
+                        ],
+                      ),
                     ),
                   );
                 },
