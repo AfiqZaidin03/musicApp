@@ -85,3 +85,12 @@ def favorite_song(song: FavoriteSong,
         return {'message': True}
     # if the song is already favorited, unfavorite the song
     # if the song is not favorited, fav the song
+
+
+@router.get('/list/favorites')
+def list_fav_songs(db: Session = Depends(get_db),
+                   auth_details=Depends(auth_middleware)):
+    user_id = auth_details['uid'],
+    fav_songs = db.query(Favorite).filter(Favorite.user_id == user_id).all()
+
+    return fav_songs
