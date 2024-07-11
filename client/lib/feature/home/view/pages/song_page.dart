@@ -3,6 +3,7 @@ import 'package:client/core/theme/app_pallete.dart';
 import 'package:client/core/widgets/loader.dart';
 import 'package:client/feature/home/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SongPage extends ConsumerWidget {
@@ -17,42 +18,58 @@ class SongPage extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 280,
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200,
-                childAspectRatio: 3,
-                crossAxisSpacing: 8,
-                mainAxisSpacing: 8,
-              ),
-              itemCount: recentlyPlayedSongs.length,
-              itemBuilder: (BuildContext context, int index) {
-                final song = recentlyPlayedSongs[index];
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36),
+            child: SizedBox(
+              height: 280,
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200,
+                  childAspectRatio: 3,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 8,
+                ),
+                itemCount: recentlyPlayedSongs.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final song = recentlyPlayedSongs[index];
 
-                return Container(
-                  decoration: const BoxDecoration(
-                    color: Pallete.borderColor,
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 56,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: NetworkImage(song.thumbnail_url),
-                            fit: BoxFit.cover,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4),
-                            bottomLeft: Radius.circular(4),
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: Pallete.borderColor,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 56,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(song.thumbnail_url),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(4),
+                              bottomLeft: Radius.circular(4),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                );
-              },
+                        const SizedBox(width: 8),
+                        Flexible(
+                          child: Text(
+                            song.song_name,
+                            style: const TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w700,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            maxLines: 1,
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
           ),
           const Padding(
