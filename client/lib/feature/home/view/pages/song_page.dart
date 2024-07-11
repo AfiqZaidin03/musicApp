@@ -28,7 +28,30 @@ class SongPage extends ConsumerWidget {
               ),
               itemCount: recentlyPlayedSongs.length,
               itemBuilder: (BuildContext context, int index) {
-                return;
+                final song = recentlyPlayedSongs[index];
+
+                return Container(
+                  decoration: const BoxDecoration(
+                    color: Pallete.borderColor,
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 56,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(song.thumbnail_url),
+                            fit: BoxFit.cover,
+                          ),
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(4),
+                            bottomLeft: Radius.circular(4),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
               },
             ),
           ),
