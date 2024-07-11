@@ -10,6 +10,7 @@ from sqlalchemy.orm import Session
 from database import get_db
 from middleware.auth_middleware import auth_middleware
 from models.song import Song
+from pydantic_schemas.favorite_song import FavoriteSong
 
 router = APIRouter()
 
@@ -62,6 +63,7 @@ def list_songs(db: Session = Depends(get_db),
 
 
 @router.post('/favorite')
-def favorite_song(db: Session-Depends(get_db),
+def favorite_song(fav_song: FavoriteSong,
+                  db: Session = Depends(get_db),
                   auth_details=Depends(auth_middleware)):
     pass
