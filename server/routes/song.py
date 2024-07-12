@@ -5,7 +5,7 @@ import cloudinary
 import cloudinary.uploader
 from dotenv import load_dotenv
 from fastapi import APIRouter, Depends, File, Form, UploadFile
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 
 from database import get_db
 from middleware.auth_middleware import auth_middleware
@@ -91,6 +91,7 @@ def favorite_song(song: FavoriteSong,
 def list_fav_songs(db: Session = Depends(get_db),
                    auth_details=Depends(auth_middleware)):
     user_id = auth_details['uid'],
-    fav_songs = db.query(Favorite).filter(Favorite.user_id == user_id).all()
+    fav_songs = db.query(Favorite).filter(
+        Favorite.user_id == user_id).options(joinedload(Favorite.song)).all()
 
     return fav_songs
