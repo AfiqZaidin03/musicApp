@@ -1,5 +1,5 @@
+import 'package:client/core/models/user_model.dart';
 import 'package:client/core/provider/current_user_notifier.dart';
-import 'package:client/feature/auth/model/user_model.dart';
 import 'package:client/feature/auth/repositories/auth_local_repository.dart';
 import 'package:client/feature/auth/repositories/auth_remote_repository.dart';
 import 'package:fpdart/fpdart.dart';
