@@ -35,7 +35,8 @@ class SongPage extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36),
+            padding:
+                const EdgeInsets.only(top: 20, left: 16, right: 16, bottom: 36),
             child: SizedBox(
               height: 280,
               child: GridView.builder(
