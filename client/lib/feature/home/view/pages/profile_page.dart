@@ -43,78 +43,104 @@ class ProfilePage extends ConsumerWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 24),
             Container(
               padding: const EdgeInsets.all(15),
-              height: 150,
-              width: double.infinity,
+              height: 50,
               decoration: BoxDecoration(
                 color: Pallete.containerColor,
-                borderRadius: BorderRadius.circular(15),
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.grey.shade800,
+                    width: 0.5,
+                  ),
+                ),
+                borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(15),
+                  topLeft: Radius.circular(15),
+                ),
               ),
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Username',
-                        style: TextStyle(
-                          color: Pallete.greyColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Text(
-                        userData!.name,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
+                  const Text(
+                    'Username',
+                    style: TextStyle(
+                      color: Pallete.greyColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Email',
-                        style: TextStyle(
-                          color: Pallete.greyColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Text(
-                        userData.email,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
+                  Text(
+                    userData!.name,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Favorite songs',
-                        style: TextStyle(
-                          color: Pallete.greyColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Text(
-                        '${userData.favorites.length}',
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
+                ],
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(15),
+              height: 50,
+              decoration: BoxDecoration(
+                color: Pallete.containerColor,
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.grey.shade800,
+                    width: 0.5,
+                  ),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Email',
+                    style: TextStyle(
+                      color: Pallete.greyColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Text(
+                    userData.email,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(15),
+              height: 50,
+              decoration: const BoxDecoration(
+                color: Pallete.containerColor,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Favorites',
+                    style: TextStyle(
+                      color: Pallete.greyColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Text(
+                    '${userData.favorites.length}',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ],
               ),
