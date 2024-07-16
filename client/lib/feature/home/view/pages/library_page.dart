@@ -2,6 +2,7 @@ import 'package:client/core/provider/current_song_notifier.dart';
 import 'package:client/core/theme/app_pallete.dart';
 import 'package:client/core/widgets/app_bar.dart';
 import 'package:client/core/widgets/loader.dart';
+import 'package:client/feature/home/view/pages/profile_page.dart';
 import 'package:client/feature/home/view/pages/upload_song_page.dart';
 import 'package:client/feature/home/viewmodel/home_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,12 +20,11 @@ class LibraryPage extends ConsumerWidget {
         hideBack: true,
         action: IconButton(
           onPressed: () {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (BuildContext context) => const ProfilePage(),
-            //   ),
-            // );
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const ProfilePage(),
+              ),
+            );
           },
           icon: const Icon(Icons.person),
         ),
