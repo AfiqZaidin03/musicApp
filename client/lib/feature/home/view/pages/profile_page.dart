@@ -35,7 +35,7 @@ class ProfilePage extends ConsumerWidget {
             const SizedBox(height: 20),
             const Center(
               child: CircleAvatar(
-                backgroundColor: Pallete.gradient2,
+                backgroundColor: Pallete.containerColor,
                 radius: 50,
                 child: Icon(
                   Icons.person,
@@ -45,7 +45,8 @@ class ProfilePage extends ConsumerWidget {
             ),
             const SizedBox(height: 20),
             Container(
-              height: 200,
+              padding: const EdgeInsets.all(15),
+              height: 150,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Pallete.containerColor,
@@ -53,28 +54,67 @@ class ProfilePage extends ConsumerWidget {
               ),
               child: Column(
                 children: [
-                  Text(
-                    userData!.name,
-                    style: const TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.w700,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Username',
+                        style: TextStyle(
+                          color: Pallete.greyColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      Text(
+                        userData!.name,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 20),
-                  Text(
-                    userData.email,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Email',
+                        style: TextStyle(
+                          color: Pallete.greyColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      Text(
+                        userData.email,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 20),
-                  Text(
-                    'Favorite songs (${userData.favorites.length})',
-                    style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w700,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Favorite songs',
+                        style: TextStyle(
+                          color: Pallete.greyColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      Text(
+                        '${userData.favorites.length}',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
