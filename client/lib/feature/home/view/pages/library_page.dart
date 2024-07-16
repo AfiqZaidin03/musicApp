@@ -18,15 +18,16 @@ class LibraryPage extends ConsumerWidget {
       appBar: BasicAppbar(
         hideBack: true,
         action: IconButton(
-            onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (BuildContext context) => const ProfilePage(),
-              //   ),
-              // );
-            },
-            icon: const Icon(Icons.person)),
+          onPressed: () {
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (BuildContext context) => const ProfilePage(),
+            //   ),
+            // );
+          },
+          icon: const Icon(Icons.person),
+        ),
         title: SvgPicture.asset(
           'assets/icons/app_icon.svg',
           height: 60,
