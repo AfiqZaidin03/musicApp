@@ -51,7 +51,7 @@ class ProfilePage extends ConsumerWidget {
                 color: Pallete.containerColor,
                 border: Border(
                   bottom: BorderSide(
-                    color: Colors.grey.shade800,
+                    color: Pallete.borderLineColor,
                     width: 0.5,
                   ),
                 ),
@@ -88,7 +88,7 @@ class ProfilePage extends ConsumerWidget {
                 color: Pallete.containerColor,
                 border: Border(
                   bottom: BorderSide(
-                    color: Colors.grey.shade800,
+                    color: Pallete.borderLineColor,
                     width: 0.5,
                   ),
                 ),
