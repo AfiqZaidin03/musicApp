@@ -27,7 +27,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
-    formKey.currentState!.validate();
+    formKey.currentState?.validate();
   }
 
   @override
@@ -112,11 +112,12 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                         const SizedBox(height: 20),
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(
+                            Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => const LoginPage(),
                               ),
+                              (_) => false,
                             );
                           },
                           child: RichText(
