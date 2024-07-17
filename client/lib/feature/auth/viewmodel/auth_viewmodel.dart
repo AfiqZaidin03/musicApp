@@ -93,4 +93,9 @@ class AuthViewModel extends _$AuthViewModel {
     _currentUserNotifier.addUser(user);
     return state = AsyncValue.data(user);
   }
+
+  Future<void> signOutUser() async {
+    _authLocalRepository.removeToken();
+    _currentUserNotifier.clearUser();
+  }
 }
