@@ -14,8 +14,6 @@ from pydantic_schemas.user_login import UserLogin
 
 router = APIRouter()
 
-invalidated_tokens = set()
-
 # Signup
 
 
@@ -27,6 +25,7 @@ def signup_user(user: UserCreate, db: Session = Depends(get_db)):
 
     if user_db:
         raise HTTPException(400, 'User with the same email already exists!')
+        return
 
     hashed_pw = bcrypt.hashpw(user.password.encode(), bcrypt.gensalt())
     user_db = User(id=str(uuid.uuid4()), email=user.email,
@@ -59,17 +58,6 @@ def login_user(user: UserLogin, db: Session = Depends(get_db)):
     token = jwt.encode({'id': user_db.id}, 'password_key')
 
     return {'token': token, 'user': user_db}
-
-# Logout
-
-
-@router.post('/logout')
-def logout_user(x_auth_token: str = Header()):
-    if x_auth_token in invalidated_tokens:
-        raise HTTPException(400, 'Token already invalidated!')
-
-    invalidated_tokens.add(x_auth_token)
-    return {'message': 'User successfully logged out!'}
 
 # Current user data
 
