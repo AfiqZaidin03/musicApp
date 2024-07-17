@@ -46,7 +46,7 @@ class LibraryPage extends ConsumerWidget {
               ),
             ),
             SizedBox(
-              height: 700,
+              height: 500,
               child: ref.watch(getAllFavSongsProvider).when(
                     data: (data) {
                       return ListView.builder(
