@@ -1,6 +1,6 @@
 import 'package:client/core/provider/current_user_notifier.dart';
 import 'package:client/core/theme/theme.dart';
-import 'package:client/feature/auth/view/pages/signup_page.dart';
+import 'package:client/feature/auth/view/pages/login_page.dart';
 import 'package:client/feature/auth/viewmodel/auth_viewmodel.dart';
 import 'package:client/feature/home/view/pages/home_page.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +41,7 @@ class MyApp extends ConsumerWidget {
       title: 'Music App',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkThemeMode,
-      home: currentUser == null ? const SignupPage() : const HomePage(),
+      home: currentUser == null ? const LoginPage() : const HomePage(),
     );
   }
 }
