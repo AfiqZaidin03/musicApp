@@ -3,7 +3,7 @@ import uuid
 
 import bcrypt
 import jwt
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, Header, HTTPException
 from sqlalchemy.orm import Session, joinedload
 
 from database import get_db
@@ -13,6 +13,8 @@ from pydantic_schemas.user_create import UserCreate
 from pydantic_schemas.user_login import UserLogin
 
 router = APIRouter()
+
+invalidated_tokens = set()
 
 # Signup
 
@@ -58,6 +60,18 @@ def login_user(user: UserLogin, db: Session = Depends(get_db)):
     token = jwt.encode({'id': user_db.id}, 'password_key')
 
     return {'token': token, 'user': user_db}
+
+# Logout
+
+
+@router.post('/logout')
+def logout_user(x_auth_token: str = Header()):
+    if x_auth_token in invalidated_tokens:
+        raise HTTPException(400, 'Token already invalidated!')
+    invalidated_tokens.add(x_auth_token)
+    return {'message': 'User successfully logged out!'}
+
+# Current user data
 
 
 @router.get('/')
