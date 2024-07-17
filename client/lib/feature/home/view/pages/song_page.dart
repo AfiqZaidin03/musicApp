@@ -125,7 +125,9 @@ class SongPage extends ConsumerWidget {
                         scrollDirection: Axis.horizontal,
                         itemCount: songs.length,
                         itemBuilder: (BuildContext context, int index) {
-                          final song = songs[index];
+                          final reversedIndex = songs.length - 1 - index;
+                          final song = songs[reversedIndex];
+
                           return GestureDetector(
                             onTap: () {
                               ref
