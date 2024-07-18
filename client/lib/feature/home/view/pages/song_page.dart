@@ -43,73 +43,10 @@ class SongPage extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 20, left: 16, right: 16, bottom: 36),
-              child: SizedBox(
-                height: 280,
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 200,
-                    childAspectRatio: 3,
-                    crossAxisSpacing: 8,
-                    mainAxisSpacing: 8,
-                  ),
-                  itemCount: recentlyPlayedSongs.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final song = recentlyPlayedSongs[index];
-
-                    return GestureDetector(
-                      onTap: () {
-                        ref
-                            .read(currentSongNotifierProvider.notifier)
-                            .updateSong(song);
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Pallete.borderColor,
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        padding: const EdgeInsets.only(right: 20),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 56,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: NetworkImage(song.thumbnail_url),
-                                  fit: BoxFit.cover,
-                                ),
-                                borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(4),
-                                  bottomLeft: Radius.circular(4),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Flexible(
-                              child: Text(
-                                song.song_name,
-                                style: const TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w700,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                maxLines: 1,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
-                'Latest today',
+                'Latest song',
                 style: TextStyle(
                   fontSize: 23,
                   fontWeight: FontWeight.w700,
@@ -125,8 +62,8 @@ class SongPage extends ConsumerWidget {
                         scrollDirection: Axis.horizontal,
                         itemCount: songs.length,
                         itemBuilder: (BuildContext context, int index) {
-                          final reversedIndex = songs.length - 1 - index;
-                          final song = songs[reversedIndex];
+                          final latestIndex = songs.length - 1 - index;
+                          final song = songs[latestIndex];
 
                           return GestureDetector(
                             onTap: () {
@@ -196,6 +133,79 @@ class SongPage extends ConsumerWidget {
                   },
                   loading: () => const Loader(),
                 ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Latest played',
+                style: TextStyle(
+                  fontSize: 23,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36),
+              child: SizedBox(
+                height: 290,
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 200,
+                    childAspectRatio: 3,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 8,
+                  ),
+                  itemCount: recentlyPlayedSongs.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final latestIndex = recentlyPlayedSongs.length - 1 - index;
+                    final song = recentlyPlayedSongs[latestIndex];
+
+                    return GestureDetector(
+                      onTap: () {
+                        ref
+                            .read(currentSongNotifierProvider.notifier)
+                            .updateSong(song);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Pallete.borderColor,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        padding: const EdgeInsets.only(right: 20),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 56,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: NetworkImage(song.thumbnail_url),
+                                  fit: BoxFit.cover,
+                                ),
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(4),
+                                  bottomLeft: Radius.circular(4),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Flexible(
+                              child: Text(
+                                song.song_name,
+                                style: const TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w700,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                maxLines: 1,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
           ],
         ),
       ),
