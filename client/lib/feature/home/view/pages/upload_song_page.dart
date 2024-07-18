@@ -4,6 +4,7 @@ import 'package:client/core/theme/app_pallete.dart';
 import 'package:client/core/utils.dart';
 import 'package:client/core/widgets/custom_field.dart';
 import 'package:client/core/widgets/loader.dart';
+import 'package:client/feature/home/view/pages/song_page.dart';
 import 'package:client/feature/home/view/widgets/audio_wave.dart';
 import 'package:client/feature/home/viewmodel/home_viewmodel.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -56,6 +57,24 @@ class _UploadSongPageState extends ConsumerState<UploadSongPage> {
     final isLoading = ref
         .watch(homeViewmodelProvider.select((val) => val?.isLoading == true));
 
+    ref.listen(homeViewmodelProvider, (_, next) {
+      next?.when(
+        data: (data) {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SongPage(),
+            ),
+            (_) => false,
+          );
+        },
+        error: (error, stackTrace) {
+          showSnackBar(context, error.toString());
+        },
+        loading: () {},
+      );
+    });
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Upload Song'),
@@ -66,12 +85,13 @@ class _UploadSongPageState extends ConsumerState<UploadSongPage> {
               if (formKey.currentState!.validate() &&
                   seletedAudio != null &&
                   seletedImage != null) {
-                ref.read(homeViewmodelProvider.notifier).uploadSong(
-                    selectedAudio: seletedAudio!,
-                    selectedThumbnail: seletedImage!,
-                    songName: songNameController.text,
-                    artist: artistController.text,
-                    selectedColor: selectedColor);
+                await ref.read(homeViewmodelProvider.notifier).uploadSong(
+                      selectedAudio: seletedAudio!,
+                      selectedThumbnail: seletedImage!,
+                      songName: songNameController.text,
+                      artist: artistController.text,
+                      selectedColor: selectedColor,
+                    );
               } else {
                 showSnackBar(context, 'Missing fields');
               }
