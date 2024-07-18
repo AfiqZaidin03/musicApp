@@ -94,6 +94,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                                     email: emailController.text,
                                     password: passwordController.text,
                                   );
+                              await ref
+                                  .read(authViewModelProvider.notifier)
+                                  .getData();
                             } else {
                               showSnackBar(context, 'Missing fieldes!');
                             }
